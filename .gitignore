@@ -1,0 +1,7 @@
+compile_commands.json
+libeg.a
+obj
+demo/compile_commands.json
+demo/demo
+demo/obj
+demo/imgui.ini

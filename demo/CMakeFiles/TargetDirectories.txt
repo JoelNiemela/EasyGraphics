@@ -1,0 +1,3 @@
+/home/mocqoro/Programming/Projects/EasyGraphics/demo/CMakeFiles/Demo.dir
+/home/mocqoro/Programming/Projects/EasyGraphics/demo/CMakeFiles/edit_cache.dir
+/home/mocqoro/Programming/Projects/EasyGraphics/demo/CMakeFiles/rebuild_cache.dir

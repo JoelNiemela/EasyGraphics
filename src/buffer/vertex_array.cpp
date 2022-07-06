@@ -63,4 +63,8 @@ void VertexArray::clear_buffer() {
 	this->vb.clear();
 }
 
+GLuint VertexArray::get_used_count() const {
+	return this->vb.get_offset() / this->layout.get_stride();
+}
+
 } // namespace EasyGraphics

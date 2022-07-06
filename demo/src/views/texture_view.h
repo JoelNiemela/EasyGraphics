@@ -17,7 +17,7 @@
 
 class TextureView : public EasyGraphics::View {
 private:
-	std::unique_ptr<EasyGraphics::DrawBuffer> buffer;
+	std::unique_ptr<EasyGraphics::QuadBuffer> buffer;
 	glm::vec3 camera;
 
 	const EasyGraphics::Material &texture_material;

@@ -17,7 +17,7 @@
 
 class DemoView : public EasyGraphics::View {
 private:
-	std::unique_ptr<EasyGraphics::StaticDrawBuffer> buffer;
+	std::unique_ptr<EasyGraphics::QuadBuffer> buffer;
 	glm::vec3 camera;
 	glm::vec3 translation1;
 	glm::vec3 translation2;

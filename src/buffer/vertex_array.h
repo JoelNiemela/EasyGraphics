@@ -27,7 +27,7 @@ public:
 	bool insert(const void* data, GLsizeiptr size);
 	void clear_buffer();
 
-	inline GLuint get_count() const { return this->count; }
+	GLuint get_used_count() const;
 	inline const VertexBuffer& get_buffer() const { return this->vb; }
 };
 

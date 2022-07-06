@@ -13,13 +13,12 @@ QuadBuffer::QuadBuffer(VertexLayout layout, GLuint count) :
 			IndexBuffer::generate(IndexBuffer::QUADS, count)
 	)
 {
-
 }
 
 QuadBuffer::~QuadBuffer() {}
 
 GLuint QuadBuffer::draw_count() const {
-	GLuint vertex_count = this->get_vertex_array().get_count();
+	GLuint vertex_count = this->get_vertex_array().get_used_count();
 
 	if (vertex_count % 4 != 0) {
 		std::cerr << "Error in QuadBuffer: Expected verticies to be multiple of 4." << std::endl;

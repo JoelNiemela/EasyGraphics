@@ -60,6 +60,9 @@ private:
 	void initImGui() const;
 };
 
+#ifdef WINDOWS
+__stdcall
+#endif
 void debugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, int length, const char *message, const void *userParam);
 
 } // namespace EasyGraphics

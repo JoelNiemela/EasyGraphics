@@ -175,6 +175,9 @@ void Renderer::initImGui() const {
 	ImGui::StyleColorsDark();
 }
 
+#ifdef WINDOWS
+__stdcall
+#endif
 void debugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, int length, const char *message, const void *userParam) {
 	std::cerr << "[GL Error] " << message << std::endl;
 }

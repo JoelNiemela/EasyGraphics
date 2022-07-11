@@ -5,9 +5,9 @@
 namespace EasyGraphics {
 
 VertexArray::VertexArray(GLuint count, const VertexLayout layout) :
+	vb(VertexBuffer(nullptr, count * layout.get_stride())),
 	id(new_vertex_array()),
 	count(count),
-	vb(VertexBuffer(nullptr, count * layout.get_stride())),
 	layout(layout)
 {
 	this->bind();
@@ -25,9 +25,9 @@ VertexArray::VertexArray(GLuint count, const VertexLayout layout) :
 }
 
 VertexArray::VertexArray(VertexArray &&other) noexcept : 
+	vb(std::move(other.vb)),
 	id(other.id),
 	count(other.count),
-	vb(std::move(other.vb)),
 	layout(other.layout)
 {
 	std::destroy_at(&other.id);

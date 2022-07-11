@@ -5,18 +5,18 @@
 namespace EasyGraphics {
 
 VertexBuffer::VertexBuffer(const void* data, GLuint size) :
+	offset(0),
 	id(VertexBuffer::new_buffer()),
-	size(size),
-	offset(0)
+	size(size)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, this->id);
 	glBufferData(GL_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW);
 }
 
 VertexBuffer::VertexBuffer(VertexBuffer &&other) noexcept : 
+	offset(other.offset),
 	id(other.id),
-	size(other.size),
-	offset(other.offset)
+	size(other.size)
 {
 	std::destroy_at(&other.id);
 	std::construct_at(&other.id, 0);

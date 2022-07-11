@@ -49,6 +49,34 @@ void Application::run() {
 	}
 }
 
+void Application::use(const DrawBuffer &buffer) const {
+	this->use(buffer.get_vertex_array());
+	this->use(buffer.get_index_buffer());
+}
+
+void Application::use(const VertexArray &vertex_array) const {
+	if (this->vertex_array != vertex_array.id) {
+		glBindVertexArray(vertex_array.id);
+		this->vertex_array = vertex_array.id;
+	}
+
+	this->use(vertex_array.get_buffer());
+}
+
+void Application::use(const IndexBuffer &index_buffer) const {
+	if (this->index_buffer != index_buffer.id) {
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer.id);
+		this->index_buffer = index_buffer.id;
+	}
+}
+
+void Application::use(const VertexBuffer &vertex_buffer) const {
+	if (this->vertex_buffer != vertex_buffer.id) {
+		glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer.id);
+		this->vertex_buffer = vertex_buffer.id;
+	}
+}
+
 const Shader& Application::load_shader(const std::string &name, const std::string &vertex_path, const std::string &fragment_path) {
 	this->shaders.try_emplace(name, vertex_path, fragment_path);
 

@@ -1,6 +1,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include "buffer/vertex_buffer.h"
 #include "renderer.h"
 #include "view.h"
 
@@ -18,6 +19,10 @@ private:
 	std::unique_ptr<Shader> null_shader;
 	std::unique_ptr<Texture> null_texture;
 	std::unique_ptr<Material> null_material;
+
+	mutable GLuint vertex_array;
+	mutable GLuint vertex_buffer;
+	mutable GLuint index_buffer;
 protected:
 	ViewInterface *view;
 public:
@@ -32,6 +37,11 @@ public:
 	void set_view(ViewClass* view) {
 		this->view = static_cast<ViewInterface*>(view);
 	}
+
+	void use(const DrawBuffer &buffer) const;
+	void use(const VertexArray &vertex_array) const;
+	void use(const IndexBuffer &index_buffer) const;
+	void use(const VertexBuffer &vertex_buffer) const;
 
 	const Shader& load_shader(const std::string &name, const std::string &vertex_path, const std::string &fragment_path);
 	const Shader& shader(const std::string &name) const;

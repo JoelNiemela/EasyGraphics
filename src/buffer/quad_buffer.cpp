@@ -1,7 +1,7 @@
-#include "quad_buffer.h"
+#include "buffer/quad_buffer.h"
 
-#include "index_buffer.h"
-#include "vertex_array.h"
+#include "buffer/index_buffer.h"
+#include "buffer/vertex_array.h"
 
 #include <iostream>
 

@@ -1,6 +1,6 @@
-#include "shader.h"
+#include "res/shader.h"
 
-#include "material.h"
+#include "res/material.h"
 
 #include <iostream>
 #include <fstream>

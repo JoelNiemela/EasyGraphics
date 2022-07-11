@@ -1,4 +1,4 @@
-#include "vertex_array.h"
+#include "buffer/vertex_array.h"
 
 #include <memory>
 

@@ -1,4 +1,4 @@
-#include "static_draw_buffer.h"
+#include "buffer/static_draw_buffer.h"
 
 namespace EasyGraphics {
 

@@ -1,4 +1,4 @@
-#include "index_buffer.h"
+#include "buffer/index_buffer.h"
 
 #include <algorithm>
 #include <iostream>

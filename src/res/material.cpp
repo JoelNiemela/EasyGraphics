@@ -1,4 +1,4 @@
-#include "material.h"
+#include "res/material.h"
 
 namespace EasyGraphics {
 

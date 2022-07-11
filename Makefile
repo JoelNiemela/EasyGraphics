@@ -21,7 +21,7 @@ endif
 
 SRC = $(shell find src -type f -name '*.cpp' -printf '%P\n')
 OBJ = $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
-INCLUDES = -I src -I vendor/glew/include -I vendor/glfw/include -I vendor/glm -I vendor/imgui/include -I vendor/stb/include
+INCLUDES = -I include -I vendor/glew/include -I vendor/glfw/include -I vendor/glm -I vendor/imgui/include -I vendor/stb/include
 CPPFLAGS = $(DEFINES) $(INCLUDES)
 CXXFLAGS = -Wall -std=c++20
 

@@ -1,4 +1,4 @@
-#include "vertex_buffer.h"
+#include "buffer/vertex_buffer.h"
 
 #include <memory>
 

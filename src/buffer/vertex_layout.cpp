@@ -1,4 +1,4 @@
-#include "vertex_layout.h"
+#include "buffer/vertex_layout.h"
 
 #include <cassert>
 #include <iostream>

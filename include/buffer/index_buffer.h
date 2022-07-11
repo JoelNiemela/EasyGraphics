@@ -9,7 +9,7 @@
 namespace EasyGraphics {
 
 class IndexBuffer {
-private:
+public:
 	const GLuint id;
 	const GLuint count;
 public:

@@ -7,9 +7,10 @@ namespace EasyGraphics {
 
 class VertexBuffer {
 private:
+	GLuint offset;
+public:
 	const GLuint id;
 	const GLuint size;
-	GLuint offset;
 public:
 	VertexBuffer(const void* data, GLuint size);
 	VertexBuffer(const VertexBuffer &other) = delete;

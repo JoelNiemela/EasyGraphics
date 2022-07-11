@@ -8,10 +8,11 @@ namespace EasyGraphics {
 
 class VertexArray {
 private:
+	VertexBuffer vb;
+public:
 	const GLuint id;
 	// number of verticies in the VertexBuffer
 	const GLuint count;
-	VertexBuffer vb;
 	const VertexLayout layout;
 public:
 	VertexArray(GLuint count, VertexLayout layout);

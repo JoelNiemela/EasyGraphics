@@ -21,7 +21,7 @@ TARGET = bin/$(PLATFORM)/demo
 
 SRC = $(shell find src -type f -name '*.cpp' -printf '%P\n')
 OBJ = $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
-CPPFLAGS = -DGLEW_STATIC -I src -I ../src -I ../vendor/glew/include -I ../vendor/glfw/include -I ../vendor/glm -I ../vendor/imgui/include -I ../vendor/stb/include
+CPPFLAGS = -DGLEW_STATIC -I src -I ../include -I ../vendor/glew/include -I ../vendor/glfw/include -I ../vendor/glm -I ../vendor/imgui/include -I ../vendor/stb/include
 CXXFLAGS = -Wall -std=c++20
 LDFLAGS = -DGLEW_STATIC -L ../vendor/imgui/lib/$(PLATFORM) -L ../vendor/stb/lib/$(PLATFORM) -L ../lib/$(PLATFORM) $(PLATFORM_LDFLAGS)
 LDLIBS = -lEasyGraphics -limgui -lstb $(PLATFORM_LDLIBS)

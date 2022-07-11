@@ -1,6 +1,7 @@
 #include "demo_view.h"
 
 #include "buffer/quad_buffer.h"
+#include "demo_app.h"
 #include "imgui/imgui.h"
 #include "buffer/index_buffer.h"
 #include "buffer/static_draw_buffer.h"
@@ -9,12 +10,12 @@
 #include <glm/fwd.hpp>
 #include <memory>
 
-DemoView::DemoView(const EasyGraphics::Renderer &renderer) :
-	EasyGraphics::View(renderer),
+DemoView::DemoView(const DemoApp &application) :
+	EasyGraphics::View<DemoApp>(application),
 	camera(0.0f, 0.0f, 0.0f),
 	translation1(0.0f, 0.0f, 0.0f),
 	translation2(0.0f, 0.0f, 0.0f),
-	basic_material(renderer.material("basic"))
+	basic_material(application.material("basic"))
 {
 	this->buffer = std::make_unique<EasyGraphics::QuadBuffer>(
 		EasyGraphics::VertexLayout{
@@ -64,7 +65,7 @@ void DemoView::render() {
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);
 	glm::mat4 mvp = proj * view * model;
 
-	this->renderer.draw(*this->buffer, this->basic_material, { EasyGraphics::Uniform("mvp", mvp) });
+	this->application.renderer.draw(*this->buffer, this->basic_material, { EasyGraphics::Uniform("mvp", mvp) });
 }
 
 void DemoView::gui() {

@@ -22,14 +22,6 @@ class Texture;
 
 class Renderer {
 	GLFWwindow* window;
-
-	std::unordered_map<std::string, Shader> shaders;
-	std::unordered_map<std::string, Texture> textures;
-	std::unordered_map<std::string, Material> materials;
-
-	std::unique_ptr<Shader> null_shader;
-	std::unique_ptr<Texture> null_texture;
-	std::unique_ptr<Material> null_material;
 public:
 	Renderer();
 	~Renderer();
@@ -41,16 +33,6 @@ public:
 
 	void set_clear_color(float r, float g, float b, float a) const;
 	void clear() const;
-
-	const Shader& load_shader(const std::string &name, const std::string &vertex_path, const std::string &fragment_path);
-	const Shader& shader(const std::string &name) const;
-
-	const Texture& load_texture(const std::string &name, const std::string &path);
-	const Texture& texture(const std::string &name) const;
-
-	const Material& make_material(const std::string &name, const Shader &shader, std::initializer_list<Uniform> uniforms);
-	const Material& make_material(const std::string &name, const Shader &shader, std::initializer_list<Uniform> uniforms, const Texture &texture);
-	const Material& material(const std::string &name) const;
 
 	inline GLFWwindow* get_window() const { return this->window; }
 private:

@@ -1,13 +1,14 @@
 #include "menu_view.h"
 
+#include "demo_app.h"
 #include "imgui/imgui.h"
 
 #include "demo_view.h"
 #include "texture_view.h"
 
-MenuView::MenuView(const EasyGraphics::Renderer &renderer) : View(renderer) {
-	views.push_back(std::make_pair("test view", [&renderer]{ return new DemoView(renderer); }));
-	views.push_back(std::make_pair("texture view", [&renderer]{ return new TextureView(renderer); }));
+MenuView::MenuView(const DemoApp &application) : EasyGraphics::View<DemoApp>(application) {
+	views.push_back(std::make_pair("test view", [&application]{ return new DemoView(application); }));
+	views.push_back(std::make_pair("texture view", [&application]{ return new TextureView(application); }));
 }
 
 MenuView::~MenuView() {

@@ -2,6 +2,6 @@
 
 namespace EasyGraphics {
 
-View::~View() {}
+ViewInterface::~ViewInterface() {}
 
 } // namespace EasyGraphics

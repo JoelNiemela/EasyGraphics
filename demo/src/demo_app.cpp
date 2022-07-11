@@ -9,15 +9,15 @@ DemoApp::DemoApp() : EasyGraphics::Application() {
 
 
 	// Load Textures
-	this->renderer.load_texture("opengl", "res/textures/opengl.png");
+	this->load_texture("opengl", "res/textures/opengl.png");
 
 
 	// Load Materials
 
 	// Basic Material
-	this->renderer.load_shader("basic", "res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
-	this->renderer.make_material("basic",
-			this->renderer.shader("basic"),
+	this->load_shader("basic", "res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
+	this->make_material("basic",
+			this->shader("basic"),
 			{
 				EasyGraphics::Uniform("u_color", glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))
 			}
@@ -25,18 +25,17 @@ DemoApp::DemoApp() : EasyGraphics::Application() {
 
 
 	// Texture Material
-	this->renderer.load_shader("texture", "res/shaders/texture_vertex.glsl", "res/shaders/texture_fragment.glsl");
-	this->renderer.make_material("texture",
-			this->renderer.shader("texture"),
+	this->load_shader("texture", "res/shaders/texture_vertex.glsl", "res/shaders/texture_fragment.glsl");
+	this->make_material("texture",
+			this->shader("texture"),
 			{
 				EasyGraphics::Uniform("u_texture", 0)
 			},
-			this->renderer.texture("opengl")
+			this->texture("opengl")
 	);
 
-
 	// Load View
-	this->view = new MenuView(this->renderer);
+	this->set_view(new MenuView(*this));
 }
 
 DemoApp::~DemoApp() {

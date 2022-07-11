@@ -1,6 +1,7 @@
 #ifndef TEST_VIEW_H
 #define TEST_VIEW_H
 
+#include "demo_app.h"
 #include "view.h"
 
 #include <GL/glew.h>
@@ -15,7 +16,7 @@
 
 #include <memory>
 
-class DemoView : public EasyGraphics::View {
+class DemoView : public EasyGraphics::View<DemoApp> {
 private:
 	std::unique_ptr<EasyGraphics::QuadBuffer> buffer;
 	glm::vec3 camera;
@@ -24,7 +25,7 @@ private:
 
 	const EasyGraphics::Material &basic_material;
 public:
-	DemoView(const EasyGraphics::Renderer &renderer);
+	DemoView(const DemoApp &application);
 	~DemoView();
 
 	void update(double delta_time) override;

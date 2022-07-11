@@ -1,14 +1,15 @@
 #include "texture_view.h"
 
+#include "demo_app.h"
 #include "imgui/imgui.h"
 
 #include "buffer/vertex_buffer.h"
 #include "res/material.h"
 
-TextureView::TextureView(const EasyGraphics::Renderer &renderer) :
-	View(renderer),
+TextureView::TextureView(const DemoApp &application) :
+	EasyGraphics::View<DemoApp>(application),
 	camera(0.0f, 0.0f, 0.0f),
-	texture_material(renderer.material("texture"))
+	texture_material(application.material("texture"))
 {
 	this->buffer = std::make_unique<EasyGraphics::QuadBuffer>(
 		EasyGraphics::VertexLayout{
@@ -47,7 +48,7 @@ void TextureView::render() {
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);
 	glm::mat4 mvp = proj * view * model;
 
-	this->renderer.draw(*this->buffer, this->texture_material, { EasyGraphics::Uniform("mvp", mvp) }, 6);
+	this->application.renderer.draw(*this->buffer, this->texture_material, { EasyGraphics::Uniform("mvp", mvp) }, 6);
 }
 
 void TextureView::gui() {

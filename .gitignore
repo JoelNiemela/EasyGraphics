@@ -5,6 +5,5 @@ obj
 
 demo/.cache
 demo/compile_commands.json
-demo/demo
 demo/obj
 demo/imgui.ini

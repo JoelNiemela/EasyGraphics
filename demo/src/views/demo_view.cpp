@@ -57,7 +57,7 @@ void DemoView::render() {
 
 	this->buffer->clear_buffer();
 
-	this->buffer->bind();
+	this->application.use(*this->buffer);
 	this->buffer->insert(positions, sizeof(positions));
 
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);

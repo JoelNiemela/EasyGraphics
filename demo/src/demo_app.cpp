@@ -1,7 +1,5 @@
 #include "demo_app.h"
 
-#include "res/material.h"
-
 #include "views/menu_view.h"
 
 DemoApp::DemoApp() : EasyGraphics::Application() {

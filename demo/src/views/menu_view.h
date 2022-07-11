@@ -2,6 +2,7 @@
 #define MENU_VIEW_H
 
 #include "demo_app.h"
+
 #include "view.h"
 
 #include <vector>

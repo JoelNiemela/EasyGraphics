@@ -1,10 +1,8 @@
 #include "texture_view.h"
 
-#include "demo_app.h"
-#include "imgui/imgui.h"
+#include "buffer/quad_buffer.h"
 
-#include "buffer/vertex_buffer.h"
-#include "res/material.h"
+#include "imgui/imgui.h"
 
 TextureView::TextureView(const DemoApp &application) :
 	EasyGraphics::View<DemoApp>(application),

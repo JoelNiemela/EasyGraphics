@@ -1,6 +1,5 @@
 #include "menu_view.h"
 
-#include "demo_app.h"
 #include "imgui/imgui.h"
 
 #include "demo_view.h"

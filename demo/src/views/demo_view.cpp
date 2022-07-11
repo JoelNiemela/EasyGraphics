@@ -1,11 +1,8 @@
 #include "demo_view.h"
 
 #include "buffer/quad_buffer.h"
-#include "demo_app.h"
+
 #include "imgui/imgui.h"
-#include "buffer/index_buffer.h"
-#include "buffer/static_draw_buffer.h"
-#include "vertex_layout.h"
 
 #include <glm/fwd.hpp>
 #include <memory>

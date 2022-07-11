@@ -2,17 +2,12 @@
 #define TEXTURE_VIEW_H
 
 #include "demo_app.h"
+
 #include "view.h"
 
-#include <GL/glew.h>
-
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
 #include "buffer/quad_buffer.h"
-#include "res/shader.h"
-#include "res/texture.h"
-#include "renderer.h"
 
 #include <memory>
 

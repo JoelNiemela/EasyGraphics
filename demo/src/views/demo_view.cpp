@@ -12,10 +12,11 @@ DemoView::DemoView(const DemoApp &application) :
 	camera(0.0f, 0.0f, 0.0f),
 	translation1(0.0f, 0.0f, 0.0f),
 	translation2(0.0f, 0.0f, 0.0f),
-	basic_material(application.material("basic"))
+	basic_material(application.material("basic")) // reqeust the material "basic" from the application
 {
+	// make a 1000 element buffer of quads to render with
 	this->buffer = std::make_unique<EasyGraphics::QuadBuffer>(
-		EasyGraphics::VertexLayout{
+		EasyGraphics::VertexLayout{ // each element in the buffer contains 2 floats
 			EasyGraphics::VertexLayout::element(GL_FLOAT, 2)
 		},
 		1000

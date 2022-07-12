@@ -21,7 +21,6 @@ DemoApp::DemoApp() : EasyGraphics::Application() {
 			}
 	);
 
-
 	// Texture Material
 	this->load_shader("texture", "res/shaders/texture_vertex.glsl", "res/shaders/texture_fragment.glsl");
 	this->make_material("texture",
@@ -31,6 +30,23 @@ DemoApp::DemoApp() : EasyGraphics::Application() {
 			},
 			this->texture("opengl")
 	);
+
+	// Depth buffer Material
+	this->load_shader("depth", "res/shaders/depth_vertex.glsl", "res/shaders/depth_fragment.glsl");
+	this->make_material("depth1",
+			this->shader("depth"),
+			{
+				EasyGraphics::Uniform("u_color", glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))
+			}
+	);
+
+	this->make_material("depth2",
+			this->shader("depth"),
+			{
+				EasyGraphics::Uniform("u_color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f))
+			}
+	);
+
 
 	// Load View
 	this->set_view(new MenuView(*this));

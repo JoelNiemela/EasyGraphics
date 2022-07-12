@@ -4,10 +4,12 @@
 
 #include "demo_view.h"
 #include "texture_view.h"
+#include "depth_view.h"
 
 MenuView::MenuView(const DemoApp &application) : EasyGraphics::View<DemoApp>(application) {
 	views.push_back(std::make_pair("test view", [&application]{ return new DemoView(application); }));
 	views.push_back(std::make_pair("texture view", [&application]{ return new TextureView(application); }));
+	views.push_back(std::make_pair("depth view", [&application]{ return new DepthView(application); }));
 }
 
 MenuView::~MenuView() {

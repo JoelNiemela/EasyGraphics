@@ -16,6 +16,7 @@ DemoView::DemoView(const DemoApp &application) :
 {
 	// make a 1000 element buffer of quads to render with
 	this->buffer = std::make_unique<EasyGraphics::QuadBuffer>(
+		application,
 		EasyGraphics::VertexLayout{ // each element in the buffer contains 2 floats
 			EasyGraphics::VertexLayout::element(GL_FLOAT, 2)
 		},
@@ -57,7 +58,7 @@ void DemoView::render() {
 
 	this->buffer->clear_buffer();
 
-	this->application.use(*this->buffer);
+	this->buffer->bind();
 	this->buffer->insert(positions, sizeof(positions));
 
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);

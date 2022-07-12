@@ -10,6 +10,7 @@ TextureView::TextureView(const DemoApp &application) :
 	texture_material(application.material("texture"))
 {
 	this->buffer = std::make_unique<EasyGraphics::QuadBuffer>(
+		application,
 		EasyGraphics::VertexLayout{
 			EasyGraphics::VertexLayout::element(GL_FLOAT, 2),
 			EasyGraphics::VertexLayout::element(GL_FLOAT, 2)

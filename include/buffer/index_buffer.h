@@ -8,12 +8,16 @@
 
 namespace EasyGraphics {
 
+class Application;
+
 class IndexBuffer {
+private:
+	const Application &application;
 public:
 	const GLuint id;
 	const GLuint count;
 public:
-	IndexBuffer(const GLuint* data, GLuint count);
+	IndexBuffer(const Application &application, const GLuint* data, GLuint count);
 	IndexBuffer(const IndexBuffer &other) = delete;
 	IndexBuffer(IndexBuffer &&other) noexcept;
 	~IndexBuffer();
@@ -24,7 +28,7 @@ public:
 		QUADS,
 	};
 
-	static IndexBuffer generate(Shape shape, unsigned int count);
+	static IndexBuffer generate(const Application &application, Shape shape, unsigned int count);
 
 	void bind() const;
 	void unbind() const;

@@ -1,23 +1,24 @@
 #include "buffer/draw_buffer.h"
 
+#include "application.h"
+
 namespace EasyGraphics {
 
-DrawBuffer::DrawBuffer(VertexArray &&va, IndexBuffer &&ib) :
+DrawBuffer::DrawBuffer(const Application &application, VertexArray &&va, IndexBuffer &&ib) :
 	va(std::move(va)),
-	ib(std::move(ib))
+	ib(std::move(ib)),
+	application(application)
 {
 }
 
 DrawBuffer::~DrawBuffer() {}
 
 void DrawBuffer::bind() const {
-	this->va.bind();
-	this->ib.bind();
+	this->application.use(*this);
 }
 
 void DrawBuffer::unbind() const {
-	this->va.unbind();
-	this->ib.unbind();
+	this->application.disable_draw_buffer();
 }
 
 bool DrawBuffer::insert(const void* data, GLsizeiptr size) {

@@ -1,5 +1,7 @@
 #include "buffer/index_buffer.h"
 
+#include "application.h"
+
 #include <algorithm>
 #include <iostream>
 #include <cassert>
@@ -7,7 +9,8 @@
 
 namespace EasyGraphics {
 
-IndexBuffer::IndexBuffer(const GLuint* data, GLuint count) :
+IndexBuffer::IndexBuffer(const Application &application, const GLuint* data, GLuint count) :
+	application(application),
 	id(IndexBuffer::new_buffer()),
 	count(count)
 {
@@ -16,6 +19,7 @@ IndexBuffer::IndexBuffer(const GLuint* data, GLuint count) :
 }
 
 IndexBuffer::IndexBuffer(IndexBuffer &&other) noexcept : 
+	application(other.application),
 	id(other.id),
 	count(other.count)
 {
@@ -24,7 +28,7 @@ IndexBuffer::IndexBuffer(IndexBuffer &&other) noexcept :
 }
 
 IndexBuffer::~IndexBuffer() {
-	this->unbind();
+	this->application.disable_index_buffer();
 	glDeleteBuffers(1, &this->id);
 }
 
@@ -35,7 +39,7 @@ GLuint IndexBuffer::new_buffer() {
 	return id;
 }
 
-IndexBuffer IndexBuffer::generate(Shape shape, unsigned int count) {
+IndexBuffer IndexBuffer::generate(const Application &application, Shape shape, unsigned int count) {
 	switch (shape) {
 		case Shape::QUADS:
 			GLuint indicies[count * 6];
@@ -49,7 +53,7 @@ IndexBuffer IndexBuffer::generate(Shape shape, unsigned int count) {
 				indicies[(i * 6) + 5] = 0 + (i * 4);
 			}
 
-			return IndexBuffer(indicies, count * 6);
+			return IndexBuffer(application, indicies, count * 6);
 	}
 
 	std::cerr << "Error in IndexBuffer::generate: unsupported shape (" << shape << ")" << std::endl;
@@ -57,11 +61,11 @@ IndexBuffer IndexBuffer::generate(Shape shape, unsigned int count) {
 }
 
 void IndexBuffer::bind() const {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->id);
+	this->application.use(*this);
 }
 
 void IndexBuffer::unbind() const {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	this->application.disable_index_buffer();
 }
 
 } // namespace EasyGraphics

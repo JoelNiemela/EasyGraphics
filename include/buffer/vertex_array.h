@@ -8,6 +8,7 @@ namespace EasyGraphics {
 
 class VertexArray {
 private:
+	const Application &application;
 	VertexBuffer vb;
 public:
 	const GLuint id;
@@ -15,7 +16,7 @@ public:
 	const GLuint count;
 	const VertexLayout layout;
 public:
-	VertexArray(GLuint count, VertexLayout layout);
+	VertexArray(const Application &application, GLuint count, VertexLayout layout);
 	VertexArray(const VertexArray &other) = delete;
 	VertexArray(VertexArray &&other) noexcept;
 	~VertexArray();

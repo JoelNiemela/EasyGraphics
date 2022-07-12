@@ -5,14 +5,17 @@
 
 namespace EasyGraphics {
 
+class Application;
+
 class VertexBuffer {
 private:
+	const Application &application;
 	GLuint offset;
 public:
 	const GLuint id;
 	const GLuint size;
 public:
-	VertexBuffer(const void* data, GLuint size);
+	VertexBuffer(const Application &application, const void* data, GLuint size);
 	VertexBuffer(const VertexBuffer &other) = delete;
 	VertexBuffer(VertexBuffer &&other) noexcept;
 	~VertexBuffer();

@@ -12,8 +12,10 @@ class DrawBuffer {
 private:
 	VertexArray va;
 	IndexBuffer ib;
+protected:
+	const Application &application;
 public:
-	DrawBuffer(VertexArray &&va, IndexBuffer &&ib);
+	DrawBuffer(const Application &application, VertexArray &&va, IndexBuffer &&ib);
 	virtual ~DrawBuffer();
 
 	void bind() const;

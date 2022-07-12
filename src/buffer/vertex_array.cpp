@@ -1,16 +1,19 @@
 #include "buffer/vertex_array.h"
 
+#include "application.h"
+
 #include <memory>
 
 namespace EasyGraphics {
 
-VertexArray::VertexArray(GLuint count, const VertexLayout layout) :
-	vb(VertexBuffer(nullptr, count * layout.get_stride())),
+VertexArray::VertexArray(const Application &application, GLuint count, const VertexLayout layout) :
+	application(application),
+	vb(VertexBuffer(application, nullptr, count * layout.get_stride())),
 	id(new_vertex_array()),
 	count(count),
 	layout(layout)
 {
-	this->bind();
+	this->application.use(*this);
 
 	const auto& elements = layout.get_elements();
 	size_t offset = 0;
@@ -25,6 +28,7 @@ VertexArray::VertexArray(GLuint count, const VertexLayout layout) :
 }
 
 VertexArray::VertexArray(VertexArray &&other) noexcept : 
+	application(other.application),
 	vb(std::move(other.vb)),
 	id(other.id),
 	count(other.count),
@@ -35,7 +39,7 @@ VertexArray::VertexArray(VertexArray &&other) noexcept :
 }
 
 VertexArray::~VertexArray() {
-	this->unbind();
+	this->application.disable_vertex_array();
 	glDeleteVertexArrays(1, &this->id);
 }
 
@@ -47,12 +51,11 @@ GLuint VertexArray::new_vertex_array() {
 }
 
 void VertexArray::bind() const {
-	glBindVertexArray(this->id);
-	this->vb.bind();
+	application.use(*this);
 }
 
 void VertexArray::unbind() const {
-	glBindVertexArray(0);
+	application.disable_vertex_array();
 }
 
 bool VertexArray::insert(const void *data, GLsizeiptr size) {

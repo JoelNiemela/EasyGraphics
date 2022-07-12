@@ -1,10 +1,13 @@
 #include "buffer/vertex_buffer.h"
 
+#include "application.h"
+
 #include <memory>
 
 namespace EasyGraphics {
 
-VertexBuffer::VertexBuffer(const void* data, GLuint size) :
+VertexBuffer::VertexBuffer(const Application &application, const void* data, GLuint size) :
+	application(application),
 	offset(0),
 	id(VertexBuffer::new_buffer()),
 	size(size)
@@ -14,6 +17,7 @@ VertexBuffer::VertexBuffer(const void* data, GLuint size) :
 }
 
 VertexBuffer::VertexBuffer(VertexBuffer &&other) noexcept : 
+	application(other.application),
 	offset(other.offset),
 	id(other.id),
 	size(other.size)
@@ -23,7 +27,7 @@ VertexBuffer::VertexBuffer(VertexBuffer &&other) noexcept :
 }
 
 VertexBuffer::~VertexBuffer() {
-	this->unbind();
+	this->application.disable_vertex_buffer();
 	glDeleteBuffers(1, &this->id);
 }
 
@@ -35,11 +39,11 @@ GLuint VertexBuffer::new_buffer() {
 }
 
 void VertexBuffer::bind() const {
-	glBindBuffer(GL_ARRAY_BUFFER, this->id);
+	this->application.use(*this);
 }
 
 void VertexBuffer::unbind() const {
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	this->application.disable_vertex_buffer();
 }
 
 bool VertexBuffer::insert(const void* data, GLsizeiptr size) {

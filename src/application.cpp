@@ -49,6 +49,22 @@ void Application::run() {
 	}
 }
 
+void Application::draw(const DrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms, GLsizei count) const {
+	material.bind_with(uniforms);
+
+	this->use(buffer);
+
+	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr);
+};
+
+void Application::draw(const StaticDrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms) const {
+	material.bind_with(uniforms);
+
+	this->use(buffer);
+
+	glDrawElements(GL_TRIANGLES, buffer.draw_count(), GL_UNSIGNED_INT, nullptr);
+}
+
 void Application::use(const DrawBuffer &buffer) const {
 	this->use(buffer.get_vertex_array());
 	this->use(buffer.get_index_buffer());
@@ -89,7 +105,7 @@ void Application::disable_vertex_array() const {
 }
 
 void Application::disable_index_buffer() const {
-	this->vertex_array = 0;
+	this->index_buffer = 0;
 }
 
 void Application::disable_vertex_buffer() const {

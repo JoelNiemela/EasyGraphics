@@ -12,7 +12,7 @@ VertexBuffer::VertexBuffer(const Application &application, const void* data, GLu
 	id(VertexBuffer::new_buffer()),
 	size(size)
 {
-	glBindBuffer(GL_ARRAY_BUFFER, this->id);
+	this->application.use(*this);
 	glBufferData(GL_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW);
 }
 
@@ -38,15 +38,9 @@ GLuint VertexBuffer::new_buffer() {
 	return id;
 }
 
-void VertexBuffer::bind() const {
-	this->application.use(*this);
-}
-
-void VertexBuffer::unbind() const {
-	this->application.disable_vertex_buffer();
-}
-
 bool VertexBuffer::insert(const void* data, GLsizeiptr size) {
+	this->application.use(*this);
+
 	if (this->offset + size > this->size) {
 		return false;
 	}

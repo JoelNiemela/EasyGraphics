@@ -50,14 +50,6 @@ GLuint VertexArray::new_vertex_array() {
 	return id;
 }
 
-void VertexArray::bind() const {
-	application.use(*this);
-}
-
-void VertexArray::unbind() const {
-	application.disable_vertex_array();
-}
-
 bool VertexArray::insert(const void *data, GLsizeiptr size) {
 	return this->vb.insert(data, size);
 }

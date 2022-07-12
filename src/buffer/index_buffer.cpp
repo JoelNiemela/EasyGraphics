@@ -14,7 +14,7 @@ IndexBuffer::IndexBuffer(const Application &application, const GLuint* data, GLu
 	id(IndexBuffer::new_buffer()),
 	count(count)
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->id);
+	this->application.use(*this);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW);
 }
 
@@ -58,14 +58,6 @@ IndexBuffer IndexBuffer::generate(const Application &application, Shape shape, u
 
 	std::cerr << "Error in IndexBuffer::generate: unsupported shape (" << shape << ")" << std::endl;
 	assert(false);
-}
-
-void IndexBuffer::bind() const {
-	this->application.use(*this);
-}
-
-void IndexBuffer::unbind() const {
-	this->application.disable_index_buffer();
 }
 
 } // namespace EasyGraphics

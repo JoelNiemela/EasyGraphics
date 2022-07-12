@@ -58,13 +58,12 @@ void DemoView::render() {
 
 	this->buffer->clear_buffer();
 
-	this->buffer->bind();
 	this->buffer->insert(positions, sizeof(positions));
 
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);
 	glm::mat4 mvp = proj * view * model;
 
-	this->application.renderer.draw(*this->buffer, this->basic_material, { EasyGraphics::Uniform("mvp", mvp) });
+	this->application.draw(*this->buffer, this->basic_material, { EasyGraphics::Uniform("mvp", mvp) });
 }
 
 void DemoView::gui() {

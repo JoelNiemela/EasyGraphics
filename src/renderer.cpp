@@ -30,22 +30,6 @@ bool Renderer::running() const {
 	return !glfwWindowShouldClose(this->window);
 }
 
-void Renderer::draw(const DrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms, GLsizei count) const {
-	material.bind_with(uniforms);
-
-	buffer.bind();
-
-	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr);
-};
-
-void Renderer::draw(const StaticDrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms) const {
-	material.bind_with(uniforms);
-
-	buffer.bind();
-
-	glDrawElements(GL_TRIANGLES, buffer.draw_count(), GL_UNSIGNED_INT, nullptr);
-}
-
 void Renderer::set_clear_color(float r, float g, float b, float a) const {
 	glClearColor(r, g, b, a);
 }

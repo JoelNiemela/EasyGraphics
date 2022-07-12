@@ -28,9 +28,6 @@ public:
 
 	bool running() const;
 
-	void draw(const DrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms, GLsizei count) const;
-	void draw(const StaticDrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms) const;
-
 	void set_clear_color(float r, float g, float b, float a) const;
 	void clear() const;
 

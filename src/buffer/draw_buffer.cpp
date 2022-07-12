@@ -11,13 +11,7 @@ DrawBuffer::DrawBuffer(const Application &application, VertexArray &&va, IndexBu
 {
 }
 
-DrawBuffer::~DrawBuffer() {}
-
-void DrawBuffer::bind() const {
-	this->application.use(*this);
-}
-
-void DrawBuffer::unbind() const {
+DrawBuffer::~DrawBuffer() {
 	this->application.disable_draw_buffer();
 }
 

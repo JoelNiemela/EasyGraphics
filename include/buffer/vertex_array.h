@@ -23,9 +23,6 @@ public:
 
 	static GLuint new_vertex_array();
 
-	void bind() const;
-	void unbind() const;
-
 	bool insert(const void* data, GLsizeiptr size);
 	void clear_buffer();
 

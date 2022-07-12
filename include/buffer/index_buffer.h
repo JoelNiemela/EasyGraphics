@@ -30,9 +30,6 @@ public:
 
 	static IndexBuffer generate(const Application &application, Shape shape, unsigned int count);
 
-	void bind() const;
-	void unbind() const;
-
 	inline GLuint get_count() const { return this->count; };
 };
 

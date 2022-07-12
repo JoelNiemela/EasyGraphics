@@ -22,9 +22,6 @@ public:
 
 	static GLuint new_buffer();
 
-	void bind() const;
-	void unbind() const;
-
 	bool insert(const void* data, GLsizeiptr size);
 	void clear();
 

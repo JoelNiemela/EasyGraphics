@@ -18,9 +18,6 @@ public:
 	DrawBuffer(const Application &application, VertexArray &&va, IndexBuffer &&ib);
 	virtual ~DrawBuffer();
 
-	void bind() const;
-	void unbind() const;
-
 	bool insert(const void* data, GLsizeiptr size);
 	void clear_buffer();
 

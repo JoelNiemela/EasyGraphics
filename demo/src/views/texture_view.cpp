@@ -41,13 +41,12 @@ void TextureView::render() {
 
 	this->buffer->clear_buffer();
 
-	this->application.use(*this->buffer);
 	this->buffer->insert(positions, sizeof(positions));
 
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), -this->camera);
 	glm::mat4 mvp = proj * view * model;
 
-	this->application.renderer.draw(*this->buffer, this->texture_material, { EasyGraphics::Uniform("mvp", mvp) }, 6);
+	this->application.draw(*this->buffer, this->texture_material, { EasyGraphics::Uniform("mvp", mvp) }, 6);
 }
 
 void TextureView::gui() {

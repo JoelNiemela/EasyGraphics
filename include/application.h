@@ -38,6 +38,9 @@ public:
 		this->view = static_cast<ViewInterface*>(view);
 	}
 
+	void draw(const DrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms, GLsizei count) const;
+	void draw(const StaticDrawBuffer &buffer, const Material &material, std::initializer_list<Uniform> uniforms) const;
+
 	void use(const DrawBuffer &draw_buffer) const;
 	void use(const VertexArray &vertex_array) const;
 	void use(const IndexBuffer &index_buffer) const;

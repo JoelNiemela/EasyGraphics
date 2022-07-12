@@ -77,6 +77,25 @@ void Application::use(const VertexBuffer &vertex_buffer) const {
 	}
 }
 
+void Application::disable_draw_buffer() const {
+	this->disable_vertex_array();
+	this->disable_index_buffer();
+}
+
+void Application::disable_vertex_array() const {
+	this->vertex_array = 0;
+
+	this->disable_vertex_buffer();
+}
+
+void Application::disable_index_buffer() const {
+	this->vertex_array = 0;
+}
+
+void Application::disable_vertex_buffer() const {
+	this->vertex_buffer = 0;
+}
+
 const Shader& Application::load_shader(const std::string &name, const std::string &vertex_path, const std::string &fragment_path) {
 	this->shaders.try_emplace(name, vertex_path, fragment_path);
 

@@ -8,7 +8,7 @@ namespace EasyGraphics {
 
 class QuadBuffer : public StaticDrawBuffer {
 public:
-	QuadBuffer(VertexLayout layout, GLuint count);
+	QuadBuffer(const Application &application, VertexLayout layout, GLuint count);
 	~QuadBuffer();
 
 	GLuint draw_count() const override;

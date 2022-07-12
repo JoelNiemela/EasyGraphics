@@ -7,11 +7,11 @@
 
 namespace EasyGraphics {
 
-QuadBuffer::QuadBuffer(VertexLayout layout, GLuint count) :
+QuadBuffer::QuadBuffer(const Application &application, VertexLayout layout, GLuint count) :
 	StaticDrawBuffer(
-			this->application,
-			VertexArray(this->application, count * 4, layout),
-			IndexBuffer::generate(this->application, IndexBuffer::QUADS, count)
+			application,
+			VertexArray(application, count * 4, layout),
+			IndexBuffer::generate(application, IndexBuffer::QUADS, count)
 	)
 {
 }

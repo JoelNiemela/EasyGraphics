@@ -20,6 +20,7 @@ public:
 	VertexBuffer(VertexBuffer &&other) noexcept;
 	~VertexBuffer();
 
+	[[nodiscard]]
 	static GLuint new_buffer();
 
 	bool insert(const void* data, GLsizeiptr size);

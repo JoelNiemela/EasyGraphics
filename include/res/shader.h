@@ -24,6 +24,7 @@ public:
 	Shader(const std::string &vertex_shader_filepath, const std::string &fragment_shader_filepath);
 	~Shader();
 
+	[[nodiscard]]
 	static Shader* from_source(const char* vertex_shader_src, const char* fragment_shader_src);
 
 	void bind() const;
@@ -37,8 +38,12 @@ public:
 	void set_uniform(const std::string &name, glm::mat4 mat) const;
 private:
 	static std::string load_file(const std::string &file_path);
+
+	[[nodiscard]]
 	static GLuint compile_shader(GLuint type, const std::string &src);
+	[[nodiscard]]
 	static GLuint create_program(const std::string &vertex_src, const std::string &fragment_src);
+
 	GLint get_uniform_location(const std::string &name) const;
 };
 

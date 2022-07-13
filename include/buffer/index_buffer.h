@@ -22,6 +22,7 @@ public:
 	IndexBuffer(IndexBuffer &&other) noexcept;
 	~IndexBuffer();
 
+	[[nodiscard]]
 	static GLuint new_buffer();
 
 	enum Shape {

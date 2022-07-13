@@ -26,6 +26,7 @@ public:
 	Renderer();
 	~Renderer();
 
+	[[nodiscard]]
 	bool running() const;
 
 	void set_clear_color(float r, float g, float b, float a) const;

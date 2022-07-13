@@ -21,6 +21,7 @@ public:
 	VertexArray(VertexArray &&other) noexcept;
 	~VertexArray();
 
+	[[nodiscard]]
 	static GLuint new_vertex_array();
 
 	bool insert(const void* data, GLsizeiptr size);
